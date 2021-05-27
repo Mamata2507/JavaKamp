@@ -9,31 +9,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlamaio.Hrms.business.abstracts.JobPositionService;
+import kodlamaio.Hrms.business.abstracts.EmployersService;
 import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
-import kodlamaio.Hrms.entities.concretes.JobPosition;
+import kodlamaio.Hrms.entities.concretes.Employers;
+
+
 
 @RestController
-@RequestMapping("/api/jobposition")
-public class JobPositionController {
+@RequestMapping("/api/employers")
+public class EmployersController {
 
-	   private JobPositionService jobPositionService;
-	   
-	   
-    @Autowired
-	public JobPositionController(JobPositionService jobPositionService) {
+	private EmployersService employersService;
+
+	@Autowired
+	public EmployersController(EmployersService employersService) {
 		super();
-		this.jobPositionService = jobPositionService;
+		this.employersService = employersService;
+	}
+
+	@GetMapping("/getall")
+	public DataResult<List<Employers>> getAll(){
+		return this.employersService.getAll();
 	}
 	
-	@GetMapping("/getall")
-	public DataResult<List<JobPosition>> getAll(){
-    	return this.jobPositionService.getAll();
-    }
-	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobPosition jobPosition) {
-		return this.jobPositionService.add(jobPosition);
+	public Result add(@RequestBody Employers employers) {
+		return this.employersService.add(employers);
 	}
 }
