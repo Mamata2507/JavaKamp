@@ -1,10 +1,14 @@
 package kodlamaio.Hrms.business.concretes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kodlamaio.Hrms.business.abstracts.AuthService;
 import kodlamaio.Hrms.core.adapters.EmailService;
 import kodlamaio.Hrms.core.adapters.MernisService;
 import kodlamaio.Hrms.dataAccess.abstracts.UsersDao;
 
+@Service
 public class AuthManager implements AuthService{
 
 	private UsersDao usersDao;
@@ -13,6 +17,7 @@ public class AuthManager implements AuthService{
 	
 	private String message;
 	
+	@Autowired
 	public AuthManager(UsersDao usersDao, EmailService emailService, MernisService mernisService) {
 		
 		this.usersDao = usersDao;
