@@ -1,15 +1,25 @@
 package kodlamaio.Hrms.core.adapters;
 
-import kodlamaio.Hrms.fakeMernisValidationService.FakeMernisManager;
+import java.util.Date;
+
+
 
 public class MernisAdapter implements MernisService{
 
-	private FakeMernisManager fakeMernisManager;
-	
 	@Override
-	public boolean identityNumberValidation(String identityNumber) {
+	public boolean userİnformationValidation(String firstName, String lastName, String identityNumber, Date birthDate) {
 		
-		return this.fakeMernisManager.identityNumberValidation(identityNumber);
+		if(firstName.length()> 6 && lastName.length()> 6 && identityNumber.length() == 11 && birthDate.getTime() > 1974) {
+			
+			System.out.println("Kullanıcı bilgileri doğrulaması başarılı!");
+			return true;
+		}else {
+			
+			System.out.println("Kullanıcı bilgileri doğrulaması başarısız! Lütfen bilgilerinizi gözden geçiriniz.");
+			return false;
+		}
+		
+		
 	}
 
 }

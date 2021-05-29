@@ -1,15 +1,37 @@
 package kodlamaio.Hrms.core.adapters;
 
-import kodlamaio.Hrms.fakeEmailValidationService.FakeEmailManager;
+import java.util.regex.Pattern;
+
 
 public class EmailAdapter implements EmailService{
 
-	private FakeEmailManager fakeEmailManager;
-	
+
 	@Override
-	public boolean emailFormatController(String email) {
+	public boolean emailFormat(String email) {
 		
-		return this.fakeEmailManager.emailFormatController(email);
+final String EMAIL_PATTERN = "^[A-Za-z0-9+_.-]+@(.+)$";
+	    
+	    if (!Pattern.matches(EMAIL_PATTERN, email )) {
+	    	
+	        return true;
+	    } else {
+	    	
+	        return false;
+	    }
+	    
+		
 	}
 
+	@Override
+	public boolean emailCheck(String email) {
+		
+		if(!emailFormat(email)) {
+			System.out.println("E-posta doğrulaması gönderilemedi. Lütfen doğru bir e-posta giriniz!");
+			return false;
+		}else {
+			System.out.println("E-posta doğrulaması başarıyla gönderilmiştir. Lütfen e-posta kutunuzu kontrol ediniz.");
+			return true;
+		}
+	}
+ 
 }
