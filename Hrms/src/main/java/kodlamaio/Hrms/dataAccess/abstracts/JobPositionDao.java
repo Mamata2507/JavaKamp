@@ -6,4 +6,5 @@ import kodlamaio.Hrms.entities.concretes.JobPosition;
 
 public interface JobPositionDao extends JpaRepository<JobPosition, Integer>{
 
+	
 }

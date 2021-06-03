@@ -6,4 +6,6 @@ import kodlamaio.Hrms.entities.concretes.Candidates;
 
 public interface CandidatesDao extends JpaRepository<Candidates, Integer>{
 
+
+
 }

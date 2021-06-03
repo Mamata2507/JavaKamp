@@ -11,30 +11,46 @@ import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.Hrms.core.utilities.results.SuccessResult;
 import kodlamaio.Hrms.dataAccess.abstracts.EmployersDao;
+import kodlamaio.Hrms.dataAccess.abstracts.JobAdvertisementDao;
 import kodlamaio.Hrms.entities.concretes.Employers;
+
 
 @Service
 public class EmployersManager implements EmployersService{
 
 	private EmployersDao employersDao;
-
-	@Autowired
-	public EmployersManager(EmployersDao employersDao) {
+   
+    
+    @Autowired
+	public EmployersManager(EmployersDao employersDao, JobAdvertisementDao jobAdvertisementDao) {
 		super();
 		this.employersDao = employersDao;
+		
 	}
+
+	
+	
 
 	@Override
 	public DataResult<List<Employers>> getAll() {
 	     return new SuccessDataResult<List<Employers>>
-	     (this.employersDao.findAll(),"Data eklendi");
+	     (this.employersDao.findAll(),"Employers listed.");
 	}
 
 	@Override
 	public Result add(Employers employers) {
 		this.employersDao.save(employers);
-		return new SuccessResult("İş veren eklendi");
+		return new SuccessResult("Employers added.");
 	}
+
+
+
+
+
+
+	
+
+
 	
 	
 }

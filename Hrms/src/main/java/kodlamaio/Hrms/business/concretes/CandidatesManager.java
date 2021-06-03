@@ -24,15 +24,22 @@ public class CandidatesManager implements CandidatesService{
 		this.candidatesDao = candidatesDao;
 	}
 
+
+
 	@Override
 	public DataResult<List<Candidates>> getAll() {
-	return new SuccessDataResult<List<Candidates>>
-	(this.candidatesDao.findAll(),"Data eklendi");
+		return new SuccessDataResult<List<Candidates>>
+		(this.candidatesDao.findAll(),"Candidate listed");
 	}
 
+	
 	@Override
 	public Result add(Candidates candidates) {
 		this.candidatesDao.save(candidates);
-		return new SuccessResult("İş arayan eklendi");
+		return new SuccessResult("Candidate added");
 	}
+
+
+
+
 }

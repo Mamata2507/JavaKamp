@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.Hrms.business.abstracts.EmployersService;
+
 import kodlamaio.Hrms.core.utilities.results.DataResult;
 import kodlamaio.Hrms.core.utilities.results.Result;
 import kodlamaio.Hrms.entities.concretes.Employers;
+
+
 
 
 
@@ -37,4 +40,10 @@ public class EmployersController {
 	public Result add(@RequestBody Employers employers) {
 		return this.employersService.add(employers);
 	}
+	
+
+	
+	
 }
+
+

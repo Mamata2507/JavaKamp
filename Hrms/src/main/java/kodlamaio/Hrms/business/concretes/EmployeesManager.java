@@ -27,12 +27,12 @@ public class EmployeesManager implements EmployeesService{
 	@Override
 	public DataResult<List<Employees>> getAll() {
 		return new SuccessDataResult<List<Employees>>
-		(this.employeesDao.findAll(),"Data eklendi");
+		(this.employeesDao.findAll(),"Employees listed");
 	}
 	
 	@Override
 	public Result add(Employees employees) {
 	 this.employeesDao.save(employees);
-	 return new SuccessResult("Çalışan eklendi");
+	 return new SuccessResult("Employees added");
 	}
 }
