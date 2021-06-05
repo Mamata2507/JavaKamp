@@ -3,9 +3,7 @@ package kodlamaio.Hrms.entities.concretes;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -65,15 +64,17 @@ public class JobAdvertisement {
 	@Column(name = "is_active")
 	private boolean is_active;
 	
-	
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "employer_id")
 	private Employers employer;
 	
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "job_position_id")
 	private JobPosition jobPosition;
 	
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "city_id")
 	private City city;

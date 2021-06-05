@@ -2,20 +2,21 @@ package kodlamaio.Hrms.entities.concretes;
 
 import java.time.LocalDate;
 
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import org.apache.tomcat.jni.User;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -56,5 +57,8 @@ public class Candidates extends User {
 	 @NotNull
 	private LocalDate birth_date;
 	
-
+  @JsonIgnore
+  @ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "circulium_vitae_id")
+  private CirculiumVitae circulium_vitae;
 }
